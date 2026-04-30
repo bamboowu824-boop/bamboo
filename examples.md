@@ -1,4 +1,4 @@
-# 改写示意（结构与 facts 对齐）
+# 改写示意 · 结构与 facts 对齐
 
 每个场景看个语气就行。**不要**在无依据的情况下再往里面塞数字。
 
@@ -6,7 +6,7 @@
 
 底子：海晟融创售前。
 
-下面这些表述只换说法，不增加新事实：
+事实不增减，只换说法。可作参考：
 
 - 做烟草条线信息化售前，从头到尾跟客户对齐需求；方案书、立项材料、投标材料我写或主笔。
 - 产品那边需要把手头客户声音转成可拍的需求，我常去搭把手。
@@ -28,8 +28,8 @@
 
 ## D. 只要一句英文口述
 
-Rough line（用户要英文再给，别主动堆辞藻）：
+Rough line：只有用户明确要求英文时再给这一条，行文别堆砌辞藻。
 
-> Pre-sales engineer in tobacco-sector IT bids and solution docs; previously ran internal IT programs (procurement and roll-out) at a cross-border e-commerce firm, and before that consulting fieldwork plus tender support.
+> Pre-sales engineer in tobacco-sector IT bids and solution docs; previously ran internal IT programs covering procurement and roll-out at a cross-border e-commerce firm; before that, consulting fieldwork plus tender support.
 
-中英混排履历另开一行规则：公司名括号内补拼音或官方英文名，以我确认过的为准。
+中英混排时：公司全称后另补一行拼音或官方英文名；以我口头确认过的为准。
