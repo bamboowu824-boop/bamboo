@@ -7,7 +7,7 @@ description: >-
 
 # 吴金武 · 通用 AI 履历 Skill
 
-思路对齐那篇「饺子馆把店面信息开源成 Skill」：**不是给顾客用的 App**，而是给各类助手一份可核验的个人事实接口。原文讨论餐厅与 MCP；我这里换成简历数据层。[微信文章](https://mp.weixin.qq.com/s/lv69EEsxA_gUBLgucgyrKw)
+先把履历拆成 **明确的规则 (`SKILL.md`) + 可查的数据 (`facts.*`)**，再给各类 Agent 读写：动笔前必须从 facts 取数；对外材料里没有的东西不要补。
 
 ## 读什么
 
@@ -23,4 +23,4 @@ description: >-
 
 ## MCP
 
-本仓库在 `mcp/server.py` 提供 **stdio MCP**（本地进程）。要像文章那样挂 **streamable-http** 远端端点：需要自备域名/TLS/鉴权，可自行把 `FastMCP.run(transport=...)` 接到网关；本仓库不内置公网 URL。\n
+可选：通过 `mcp/server.py` 在本机启用 **stdio MCP**，把结构化履历拆成小工具便于宿主调用。若要在公网上以 HTTP/S 提供服务，自建域名与 TLS，并做好鉴权；本仓库不内置任何公网地址。
