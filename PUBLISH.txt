@@ -1,1 +1,2 @@
-【一句话简介】个人简历 → 通用 Agent Skill（含可选 MCP）。隐私写在本地 facts，远程只看到模板。\n
+【一句话】结构化个人简历 Skill：`facts` 仅存本机；远程仓库只保留模板与示例，便于他人 fork。MIT。
+【发仓库简介可粘贴】自用履历事实层：`facts.json` + `facts.md`（及可选 MCP），宿主无关；敏感信息勿 push。

@@ -1,50 +1,60 @@
 # wujinwu-resume-ai-skill
 
-把个人简历做成可被通用 Agent / MCP 客户端读取的「结构化接口」，思路和「金谷园饺子馆开源 Skill」一致（见 [此文](https://mp.weixin.qq.com/s/lv69EEsxA_gUBLgucgyrKw)）。
+将个人简历整理为结构化事实（`facts.json` / `facts.md`），配合支持 Agent Skills 或 MCP 的客户端：按岗位 JD 调整表述、撰写自述与 STAR，并尽量只引用 facts 中已有内容。
 
-## 01 · 有什么用
+## 仓库内容
 
-挂载到任意支持 Skills 目录或 MCP 的宿主（示例：OpenClaw、Codex CLI、国产 Agent IDE —— 以对应用具文档为准）后，你可以在对话里让模型撰写：
+| 文件/目录 | 说明 |
+| --- | --- |
+| `SKILL.md` | 给模型的行为约束与流程 |
+| `facts.json` | 结构化履历字段（公开仓库请使用 `facts.example.json`） |
+| `facts.md` | 人读版履历，应与 JSON 同步维护 |
+| `voice.md`、`reference.md`、`examples.md` | 语气、自检与句式示例 |
+| `mcp/` | 可选本机 MCP（stdio），按需安装依赖 |
 
-- JD 对齐的 bullet；
-- 两分钟内口述稿；
-- STAR 小故事；
-并让模型读取 `facts.json` 避免胡编。
+## 能力范围
 
-## 02 · 为什么做
+- 按 JD 改写中文履历 bullet（不捏造 facts 中不存在的 KPI、证书、项目名称）
+- 口述稿或求职材料提纲
+- STAR 小故事拆解
+- 与 facts 对照的自检
 
-等平台帮你总结前先占住一份 **AI 可读的官方履历**。换模型也只是换外壳，数据源不变。
+## 使用方法
 
-## 03 · 安装
+### 作为 Skill 目录
 
-### A. Skill 本体
+将整个文件夹放进宿主文档指定的 skills 目录，在对话开始时让模型读取 `facts.json` 与 `SKILL.md`。
 
-将整个目录放到对应产品的 **skills/** 根目录（不同客户端路径不同）；聊天时显式附上 `SKILL.md` 或要求模型读取 `facts.json`。
+### 本地 MCP（stdio）
 
-### B. MCP（stdio）
+```bash
+pip install -r mcp/requirements.txt
+```
 
-1. `pip install -r mcp/requirements.txt`
-2. 在客户端 `mcpServers` 填入（改成你的磁盘路径）：
+在宿主 MCP 配置中加入（将 `args` 改为本机的绝对路径）：
 
 ```json
 {
   "mcpServers": {
     "wujinwu-resume": {
       "command": "python",
-      "args": [
-        "d:/海晟融创/参考/last/wujinwu-resume-profile/mcp/server.py"
-      ]
+      "args": ["D:/你的路径/wujinwu-resume-profile/mcp/server.py"]
     }
   }
 }
 ```
 
-3. 重启宿主。
+保存配置后重启宿主。
 
-### C. Streamable HTTP
+### 公网 MCP（HTTP）
 
-与文中饺子馆范例一样可把 MCP 暴露在 HTTP——需自行运维和鉴权，本仓库不托管在线 URL。
+若要对公网提供服务，请自行搭建域名、HTTPS、鉴权及流量治理；本仓库不提供托管 endpoint。
 
-## 隐私
+## 隐私与分发
 
-远端 Git 请勿提交真实的 `facts.md` / `facts.json`（`.gitignore` 默认忽略）；公开仓库附带 `facts.example.*`。\n
+- 不要将真实的 `facts.md`、`facts.json` 提交到公开仓库。
+- `.gitignore` 默认忽略上述私密文件；每次 push 前用 `git status` 自检。
+
+## 路径提示
+
+在含中文路径的环境中若个别工具出现异常，可将目录临时移动到纯英文路径再操作。
