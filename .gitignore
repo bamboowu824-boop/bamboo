@@ -1,0 +1,5 @@
+facts.md
+facts.json
+*.private.md
+.DS_Store
+Thumbs.db
